@@ -4,6 +4,7 @@ import collections from "./data/collections";
 import CollectionsDetail from "./components/collections-detail";
 import LimitedProposition from "./components/limited-proposition";
 import Link from "next/link";
+import { Suspense } from "react";
 
 export default function Home() {
   return (
@@ -53,7 +54,9 @@ export default function Home() {
           </div>
         </div>
       </div>
-      <CollectionsDetail />
+      <Suspense>
+        <CollectionsDetail />
+      </Suspense>
       <LimitedProposition />
       <footer className="px-[2rem] flex flex-col mt-[12rem]">
         <div className="flex flex-row w-full">
