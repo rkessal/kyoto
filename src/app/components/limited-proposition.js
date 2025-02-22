@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import React from 'react'
 import SizeSelector from './size-selector'
+import ParallaxImage from './parallax-image'
 
 const propositions = {
   'mantra-long-sleeve-kimono': {
@@ -66,9 +67,7 @@ const LimitedProposition = () => {
       <div className='flex flex-wrap w-full'>
        {Object.keys(propositions).map(key => (
         <div className='flex items-end justify-between p-[2rem] relative h-[80rem] w-[86.4rem]' key={key}>
-          <figure className='h-full w-full overflow-hidden absolute top-0 left-0' >
-            <Image className='w-full h-full object-cover' width={864} height={800} src={propositions[key].image} alt=''/>
-          </figure>
+          <ParallaxImage alt='' width={864} height={800} src={propositions[key].image}  />
           <SizeSelector id={key} />
           <div className='z-10 mix-blend-difference text-white '>
             <p className='uppercase'>{propositions[key].collection}</p>

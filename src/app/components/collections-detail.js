@@ -10,7 +10,6 @@ const CollectionsDetail = ({
   const searchParams = useSearchParams()
   const collection = searchParams.get('collection')
 
-  console.log(collection)
   // const { logo, description, columns } = data
   return (
     <div className="pl-[14.2rem] grid">

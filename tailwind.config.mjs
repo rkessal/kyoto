@@ -11,14 +11,14 @@ export default {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
-        veryLightGray: '#E9E9E9',
-        lightGray: '#F9F9F9',
+        lightGray: '#F6F6F6',
+        veryLightGray: '#FAFAFA',
         darkGray: '#4A4A4A',
       },
       fontFamily: {
         sans: 'Funnel Sans',
         butta: ['var(--font-buttacup)']
-      }
+      },
     },
   },
   plugins: [],

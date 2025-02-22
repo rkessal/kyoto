@@ -1,18 +1,30 @@
-import React from 'react'
+'use client'
+import Link from 'next/link'
+import React, { useRef } from 'react'
+import useSelected from '../animations/useSelected'
 
-const CollectionsSelectorItem = ({ index, title, number, description }) => {
-  const selected = index === '01'
+const CollectionsSelectorItem = ({ index, title, number, description, id }) => {
+  const ref = useRef(null)
+  const {isAnimating, ...handlers} = useSelected({ ref })
+
   return (
-    <div className={`flex flex-row py-[1.5rem] px-[2rem] gap-x-[3rem] ${selected && 'bg-lightGray'}`}>
-      <span>{index}</span>
-      <div>
+    <Link 
+      {...handlers} 
+      scroll={false} 
+      href={`?collection=${id}`} 
+      className='relative flex flex-row py-[1.5rem] px-[2rem] gap-x-[3rem]'
+    >
+      <span ref={ref}
+       className='absolute w-full h-full top-0 left-0 bg-veryLightGray'></span>
+      <span className='z-30'>{index}</span>
+      <div className='z-30'>
         <div className='flex flex-row items-start'>
           <h3 className='capitalize font-butta text-[2rem] tracking-[0.6rem]'>{title}</h3>
           <div className='ml-[1rem] inline-block'>({number})</div>
         </div>
         <p className='mt-[0.5rem] capitalize'>{description}</p>
       </div>
-    </div>
+    </Link>
   )
 }
 
