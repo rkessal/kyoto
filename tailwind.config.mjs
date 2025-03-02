@@ -14,6 +14,7 @@ export default {
         lightGray: '#F6F6F6',
         veryLightGray: '#FAFAFA',
         darkGray: '#4A4A4A',
+        yellow: '#E5FF3E',
       },
       fontFamily: {
         sans: 'Funnel Sans',

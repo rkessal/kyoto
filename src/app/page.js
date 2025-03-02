@@ -8,52 +8,26 @@ import { Suspense } from "react";
 import LenisScroll from "./components/lenis-scroll";
 import Arrow from "./components/arrow";
 import CollectionsSelector from "./components/collections-selector";
+import CollectionsPreview from "./components/collections-preview";
+import CollectionsDescription from "./components/collections-description";
+import Hero from "./components/hero";
 
 export default function Home() {
   return (
     <div className="font-sans font-light leading-[1.2rem]">
-      <div className="flex flex-row w-full h-[109.7rem]  mb-[2rem]">
-        <figure className="h-[109.7rem] w-[86.4rem] relative">
-          <Image src='/hero1.png' height={1097} width={864} className="w-full h-full" alt="" />
-        </figure>
-        <figure className="h-[109.7rem] w-[86.4rem] relative">
-          <Image src='/hero2.png' height={1097} width={864} className="w-full h-full" alt="" />
-        </figure>
-        <div className="flex flex-row absolute right-[30.7rem] top-[19.3rem] w-[26.4rem]">
-          <p className="uppercase w-[12.2rem]">Welcome</p>
-          <p className="w-[12.2rem] ml-[2rem]">To a world where each thread tells a story of heritage, balance, and modernity.</p>
-        </div>
-        <div className="flex flex-col items-center text-center absolute top-[68.4rem] w-[25.1rem] left-[50%] translate-x-[-50%]">
-          <p>It is dialogue between wisdom and purity, each garment exists as a vessel of harmony and an elevated state of mind</p>
-          <Link href='/collections'>
-          <button className="uppercase mt-[1.7rem] mb-[0.5rem]">collections</button>
-          <Arrow />
-          </Link>
-        </div>
-      </div>
-
-      <div className="flex flex-row w-full px-[2rem] mb-[15.4rem]">
-        <div className="flex flex-row">
-          <figure className="relative h-[108rem] w-[69.2rem] mr-[2rem]">
-            <Image src='/collections/kyoto/kyoto-1.png' height={1080} width={692} className="h-full w-full object-cover" alt="" />
-          </figure>
-          <div className="h-[108rem] w-[12.2rem] overflow-y-hidden bg-gray-100">
-
-          </div>
-        </div>
-        <div className="ml-[2rem] pl-[14.2rem] relative w-full">
-          <h1 className="uppercase">collections</h1>
-          <div className="mt-[7.5rem]">
-            <h2 className="capitalize tracking-[0.6rem] font-butta text-[2rem] mb-[1.5rem]">Kyōto</h2>
-            <p className="w-[24.6rem]">Silent echoes of an ancient capital. Kyōto is a tribute to grace and harmony — where tradition flows seamlessly into the present. Each piece embodies the poise of a bygone era, reimagined for today’s discerning eye.</p>
-          </div>
-          <CollectionsSelector />
-        </div>
-      </div>
+      <Hero />
       <Suspense>
+        <div className="flex flex-row w-full px-[2rem] mb-[15.4rem]">
+          <CollectionsPreview />
+          <div className="ml-[2rem] pl-[14.2rem] relative w-full">
+            <h1 className="uppercase">collections</h1>
+            <CollectionsDescription />
+            <CollectionsSelector />
+          </div>
+        </div>
         <CollectionsDetail />
+        <LimitedProposition />
       </Suspense>
-      <LimitedProposition />
       <footer className="px-[2rem] flex flex-col mt-[12rem]">
         <div className="flex flex-row w-full">
           <Link href='mailto:Hello@kyoto.com' className="font-butta text-[11.7rem] mt-[3.8rem] w-1/2">Hello@kyoto.com</Link>
@@ -97,10 +71,7 @@ export default function Home() {
               </ul>
             </div>
           </div>
-          <div className="flex flex-row w-full flex-shrink-0">
-          </div>
         </div>
-        <div className="border-t-[0.01rem] border-veryLightGray w-full mt-[7rem]"></div>
         <div className="font-butta uppercase flex flex-row w-full px-[2rem] py-[5rem]">
           <div className="w-1/2">
             <p>©25 kYOTO – All rights reserved</p>

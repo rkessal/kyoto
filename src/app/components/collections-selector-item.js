@@ -20,9 +20,9 @@ const CollectionsSelectorItem = ({ index, title, number, description, id }) => {
       <div className='z-30'>
         <div className='flex flex-row items-start'>
           <h3 className='capitalize font-butta text-[2rem] tracking-[0.6rem]'>{title}</h3>
-          <div className='ml-[1rem] inline-block'>({number})</div>
+          <div className='ml-[1rem] inline-block'>{String(number).padStart(2, 0)}</div>
         </div>
-        <p className='mt-[0.5rem] capitalize'>{description}</p>
+        <p className='mt-[0.5rem] capitalize'>{description.small}</p>
       </div>
     </Link>
   )

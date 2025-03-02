@@ -38,11 +38,11 @@ export default function RootLayout({ children }) {
             <span className="text-[0rem]">Kyoto</span>
           </figure>
           <ul className="capitalize top-[2rem] left-0 absolute pl-[87.4rem]">
-            <li><MenuLink href='#' active>Home</MenuLink> </li>
-            <li><MenuLink href='#'>Shop</MenuLink></li>
-            <li><MenuLink href='#'>About</MenuLink></li>
+            <li><MenuLink href='/' active>Home</MenuLink> </li>
+            <li><MenuLink href='/collections'>Shop</MenuLink></li>
+            <li><MenuLink href='/about'>About</MenuLink></li>
             <li><MenuLink href='#'>journal</MenuLink></li>
-            <li><MenuLink href='#'>contact</MenuLink></li>
+            <li><MenuLink href='/contact'>contact</MenuLink></li>
           </ul>
           <div className="ml-auto">Bag (0)</div>
         </nav>

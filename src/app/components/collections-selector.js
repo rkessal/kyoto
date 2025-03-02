@@ -13,7 +13,7 @@ const CollectionsSelector = () => {
 
   useGSAP(() => {
     gsap.to(ref.current, {
-      yPercent: Object.keys(collections).indexOf(current) * 100,
+      yPercent: Math.max(Object.keys(collections).indexOf(current) * 100, 0),
       duration: 1,
       ease: 'power4.inOut'
     })
@@ -30,6 +30,7 @@ const CollectionsSelector = () => {
         <CollectionsSelectorItem
           key={key}
           {...collections[key]}
+          number={Object.keys(collections[key].images).length}
         />
       ))}
     </div>
