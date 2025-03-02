@@ -2,12 +2,10 @@ import { Funnel_Sans } from "next/font/google";
 import localFont from 'next/font/local'
 import "./globals.css";
 import Image from "next/image";
-import FancyLink from "./components/fancy-link";
 import MenuLink from "./components/menu-link";
-
 import fs from 'fs';
 import path from 'path';
-import Head from 'next/head';
+import PreloadImages from "./components/PreloadImages";
 
 async function getImages() {
   const collectionsDir = path.join(process.cwd(), 'public/collections');
@@ -59,11 +57,7 @@ export default async function RootLayout({ children }) {
 
   return (
     <>
-      <Head>
-        {images.map((src) => (
-          <link key={src} rel="preload" href={src} as="image" />
-        ))}
-      </Head>
+      <PreloadImages images={images} />
       <html lang="en">
         <body
           className={`${funnelSans.variable} ${buttacup.variable} antialiased`}

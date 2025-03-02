@@ -32,6 +32,7 @@ const CollectionsPreview = () => {
         ease: 'power4.inOut',
         onComplete: () => {
           setCurrent(newCollection)
+          setQueue(['1'])
           setAnimatingOut(false)
         }
       })
