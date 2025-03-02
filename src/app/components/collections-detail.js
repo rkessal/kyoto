@@ -82,7 +82,7 @@ const CollectionsDetail = () => {
         <div className='h-[50rem] absolute flex flex-row top-0 -ml-[7.1rem] left-[50%] translate-x-[-50%]'>
           <div className='w-[42rem] h-[50rem] relative'>
             <ScrollTriggerWrapper animationFn={animationFn} >
-              <ParallaxImage src='/o.png' width={420} height={500} alt='' />
+              <ParallaxImage loading='eager' src='/o.png' width={420} height={500} alt='' />
             </ScrollTriggerWrapper>
           </div>
           <div className="absolute w-[30.8rem] -ml-[1rem] origin-bottom-left bottom-0 -rotate-90 ">

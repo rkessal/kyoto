@@ -33,7 +33,7 @@ const LimitedProposition = () => {
               animationFn={animationFn}
               params={{start: 'top 90%'}}
             >
-              <ParallaxImage alt='' width={834} height={800} src={propositions[key].image}  />
+              <ParallaxImage loading='eager' alt='' width={834} height={800} src={propositions[key].image}  />
             </ScrollTriggerWrapper>
             <SizeSelector id={key} />
           </div>

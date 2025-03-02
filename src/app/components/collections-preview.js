@@ -120,6 +120,7 @@ const CollectionsPreview = () => {
             <li key={`preview-${img}${index}`} className="absolute top-0 left-0 w-full h-full image-preview preview-slide-in">
               <figure className="relative h-full w-full">
                 <Image 
+                  loading='eager'
                   src={images[img].normal} 
                   height={1080} 
                   width={692} 
@@ -144,7 +145,7 @@ const CollectionIndex = ({ imgUrl, available, ...props }) => {
   return (
     <li>
       <figure {...props} className='w-[12.2rem] h-[14rem]'>
-        <Image className={`w-full h-full object-cover ${!available && 'grayscale-0 brightness-75'}`} alt='' src={imgUrl} height={140} width={122} />
+        <Image loading='eager' className={`w-full h-full object-cover ${!available && 'grayscale-0 brightness-75'}`} alt='' src={imgUrl} height={140} width={122} />
       </figure>
     </li>
   )

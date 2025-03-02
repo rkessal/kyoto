@@ -6,10 +6,10 @@ const Hero = () => {
   return (
       <div className="flex flex-row w-full h-[109.7rem]  mb-[2rem]">
         <figure className="h-[109.7rem] w-[86.4rem] relative">
-          <Image src='/hero1.png' height={1097} width={864} className="w-full h-full" alt="" />
+          <Image loading="eager" src='/hero1.png' height={1097} width={864} className="w-full h-full" alt="" />
         </figure>
         <figure className="h-[109.7rem] w-[86.4rem] relative">
-          <Image src='/hero2.png' height={1097} width={864} className="w-full h-full" alt="" />
+          <Image loading="eager" src='/hero2.png' height={1097} width={864} className="w-full h-full" alt="" />
         </figure>
         <div className="flex flex-row absolute right-[30.7rem] top-[19.3rem] w-[26.4rem]">
           <p className="uppercase w-[12.2rem]">Welcome</p>
