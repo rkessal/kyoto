@@ -6,6 +6,9 @@ import MenuLink from "./components/menu-link";
 import fs from 'fs';
 import path from 'path';
 import PreloadImages from "./components/PreloadImages";
+import Footer from "./components/footer";
+import LenisScroll from "./components/lenis-scroll";
+import { TextReveal } from "./components/text-reveal";
 
 async function getImages() {
   const collectionsDir = path.join(process.cwd(), 'public/collections');
@@ -77,6 +80,9 @@ export default async function RootLayout({ children }) {
             <div className="ml-auto">Bag (0)</div>
           </nav>
           {children}
+          <Footer />
+          <LenisScroll />
+          <TextReveal />
         </body>
       </html>
     </>

@@ -1,21 +1,27 @@
 'use client'
-import React from 'react'
+import React, { useRef } from 'react'
 import ParallaxImage from './parallax-image'
 import ScrollTriggerWrapper from '../animations/ScrollTriggerWrapper'
 import gsap from 'gsap'
 
-
 const CollectionsDetail = () => {
+  const textRef = useRef(null)
+
   const animationFn = (tl, ref) => {
     gsap.set('figure', {
       clipPath: 'polygon(0% 0%, 0% 0%, 0% 100%, 0% 100%)'
     })
   
-    tl.to('figure', {
-      clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)',
+    tl.from('img', {
+      scale: 1.4,
       duration: 2.5,
       ease: 'power4.out',
     })
+      .to('figure', {
+        clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)',
+        duration: 2.5,
+        ease: 'power4.out',
+      }, '=')
   }
   return (
     <div className="pl-[14.2rem]">
@@ -29,17 +35,17 @@ const CollectionsDetail = () => {
       </div>
       <div className='flex flex-row w-full'>
         <div className='ml-[14rem] mt-[0.4rem] w-[28.4rem]'>
-          <p>A4</p>
-          <p>Ethereal Weave™</p>
+          <p className="split-text">A4</p>
+          <p className="split-text">Ethereal Weave™</p>
         </div>
         <div className='mt-[0.4rem] w-[28.4rem]'>
-          <p>LTD</p>
-          <p>Shadowform™</p>
+          <p className="split-text">LTD</p>
+          <p className="split-text">Shadowform™</p>
         </div>
         <div className='mt-[0.4rem] w-[30.3rem] '>
           <div className='w-[28.4rem]'>
-          <p className='w-[7.5rem]'>Silent echoes of A capital.</p>
-          <p className='w-[10.3rem]'>
+          <p className='w-[7.5rem] split-text'>Silent echoes of A capital.</p>
+          <p className='w-[10.3rem] split-text'>
             <span className='mb-[]'>Durable <br></br> Balances resilience & elegance. </span>
             <br></br>
             <br></br>
@@ -48,17 +54,17 @@ const CollectionsDetail = () => {
           </div>
         </div>
         <div className='mt-[0.4rem]'>
-          <p>A<sup>1</sup></p>
-          <p>Luminous Thread™</p>
+          <p className="split-text">A<sup>1</sup></p>
+          <p className="split-text">Luminous Thread™</p>
         </div>
-        <div className='mt-[15rem] w-[30.3rem] '>
+        <div ref={textRef} className='mt-[15rem] w-[30.3rem] '>
           <div className='flex flex-row mb-[2.5rem]'>
             <span className='block mr-[2rem] w-[5rem] text-right -ml-[5rem]'>27</span>
-            <p>Silent Echoes of an Ancient Capital</p>
+            <p className="split-text">Silent Echoes of an Ancient Capital</p>
           </div>
           <div className='flex flex-row mb-[5rem]'>
             <span className='block mr-[2rem] w-[5rem] text-right -ml-[5rem]'>A4</span>
-            <p className='w-[26.4rem] capitalize'>
+            <p className='w-[26.4rem] capitalize split-text'>
               Crafted from the fabrics of the future, each piece is designed with unparalleled precision and innovation. Our textiles combine advanced technology with timeless artistry, creating materials that transcend the ordinary.
               <br></br>
               <br></br>
@@ -68,11 +74,11 @@ const CollectionsDetail = () => {
           <div className='flex flex-row mb-[5rem]'>
             <div className='flex flex-row mb-[5rem] mr-[4rem]'>
               <span className='block mr-[2rem] w-[5rem] text-right -ml-[5rem]'>A4</span>
-              <p className='w-[10rem] text-justify'>A lightweight, breathable fabric that feels as soft as air, inspired by the seamless flow of traditional Japanese silk.</p>
+              <p className='w-[10rem] text-justify split-text'>A lightweight, breathable fabric that feels as soft as air, inspired by the seamless flow of traditional Japanese silk.</p>
             </div>
             <div className='flex flex-row mb-[5rem]'>
               <span className='block mr-[2rem] w-[5rem] text-right -ml-[5rem]'>LTD</span>
-              <p className='text-justify w-[10.4rem]'>A structured yet flexible material, perfect for architectural silhouettes.</p>
+              <p className='text-justify w-[10.4rem] split-text'>A structured yet flexible material, perfect for architectural silhouettes.</p>
             </div>
           </div>
         </div>

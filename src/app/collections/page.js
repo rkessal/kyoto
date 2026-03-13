@@ -1,17 +1,15 @@
-import Image from "next/image";
-import CollectionsSelectorItem from "../components/collections-selector-item";
+import ProductCard from "../components/product-card";
 import collections from "../data/collections";
-import CollectionsDetail from "../components/collections-detail";
-import LimitedProposition from "../components/limited-proposition";
-import Link from "next/link";
-import { Suspense } from "react";
-import LenisScroll from "../components/lenis-scroll";
-import Arrow from "../components/arrow";
+import propositions from "../data/propositions";
 
 export default function Collection() {
   return (
-    <div className="font-sans font-light leading-[1.2rem]">
-      hello
+    <div className="font-sans font-light leading-[1.2rem] mt-[5.3rem] px-[2rem]">
+      <div className="max-w-[140.4rem] w-full flex flex-wrap gap-[2rem]">
+       {Object.keys(propositions).map(key => (
+        <ProductCard products={propositions} key={key} productKey={key} />
+       ))}
+      </div>
     </div>
   );
 }

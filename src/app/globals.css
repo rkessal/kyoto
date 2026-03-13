@@ -9,12 +9,14 @@
 
 html {
   font-size: calc((100vw / 1728) * 10);
+  height: 100%;
 }
 
 body {
   font-size: 1.2rem;
   color: var(--foreground);
   background: var(--background);
+  height: 100%;
 }
 
 .scrollbar-hide::-webkit-scrollbar {
