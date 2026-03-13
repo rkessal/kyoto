@@ -26,7 +26,7 @@ const CollectionsPreview = () => {
     if (newCollection !== current) {
       setAnimatingOut(true) 
 
-      gsap.to('.preview-fade-out', {
+      gsap.to('.collection-preview-fade-out', {
         opacity: 0,
         duration: 0.5,
         ease: 'power4.inOut',
@@ -50,10 +50,10 @@ const CollectionsPreview = () => {
       duration: 0.6,
       opacity: 0
     })
-    gsap.set('.preview-slide-in img', {
+    gsap.set('.collection-preview-slide-in img', {
       clipPath: 'polygon(0% 0%, 0% 0%, 0% 100%, 0% 100%)'
     })
-    tl.to('.preview-slide-in img', {
+    tl.to('.collection-preview-slide-in img', {
       clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)',
       duration: 2,
       ease: 'power4.inOut',
@@ -108,7 +108,7 @@ const CollectionsPreview = () => {
   }, [animating])
 
   return (
-    <div ref={ref} key={current} className="flex flex-row preview-fade-out">
+    <div ref={ref} key={current} className="flex flex-row collection-preview-fade-out">
       <div className='flex flex-col h-[108rem] overflow-y-hidden mr-[2rem] relative'>
         <span ref={title} className='z-30 absolute top-[50%] left-[50%] -translate-x-[50%] mix-blend-difference text-yellow tracking-[0.6rem] -translate-y-[50%] text-[1.8rem] font-butta'>{collections[current].title}</span>
         {!available && (
@@ -118,7 +118,7 @@ const CollectionsPreview = () => {
         )}
         <ul className="relative h-[108rem] w-[69.2rem]">
           {queue.map((img, index) => images[img] && (
-            <li key={`preview-${img}${index}`} className="absolute top-0 left-0 w-full h-full image-preview preview-slide-in">
+            <li key={`preview-${img}${index}`} className="absolute top-0 left-0 w-full h-full image-preview collection-preview-slide-in">
               <figure className="relative h-full w-full">
                 <Image 
                   loading='eager'
@@ -133,7 +133,7 @@ const CollectionsPreview = () => {
           ))}
         </ul>
       </div>
-      <ul data-lenis-prevent className="relative flex flex-col gap-y-[0.5rem] max-h-[108rem] h-full overflow-y-auto scrollbar-hide w-[12.2rem] preview-slide-in">
+      <ul data-lenis-prevent className="relative flex flex-col gap-y-[0.5rem] max-h-[108rem] h-full overflow-y-auto scrollbar-hide w-[12.2rem] collection-preview-slide-in">
         {Object.keys(images).map(img => (
           <CollectionIndex available={available} onMouseOver={() => onMouseOver(img)} key={img} imgUrl={images[img].small} />
         ))}

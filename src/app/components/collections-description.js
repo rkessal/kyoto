@@ -22,7 +22,7 @@ const CollectionsDescription = () => {
     if (newCollection !== current) {
       setAnimatingOut(true) 
 
-      gsap.to('.fade-out', {
+      gsap.to('.description-fade-out', {
         opacity: 0,
         yPercent: 15,
         duration: 0.5,
@@ -46,14 +46,14 @@ const CollectionsDescription = () => {
     })
 
     splitText.lines.forEach(line => {
-      line.innerHTML = `<span class="fade-out inline-block slide-in align-text-bottom">${line.innerText}</span>`
+      line.innerHTML = `<span class="description-fade-out inline-block description-slide-in align-text-bottom">${line.innerText}</span>`
     })
 
     const tl = gsap.timeline({
       scrollTrigger: ref.current
     })
 
-    tl.from('.slide-in', {
+    tl.from('.description-slide-in', {
       opacity: 0,
       yPercent: 100,
       duration: 1,
@@ -76,7 +76,7 @@ const CollectionsDescription = () => {
         {title}
       </h2>
       <p className="split mb-[2rem] w-[24.6rem]">{description.long}</p>
-      <Link className={`${available ? 'inline-block' : 'hidden'} fade-out `} ref={arrowRef} href={`/collections/${current}`}>
+      <Link className={`${available ? 'inline-block' : 'hidden'} description-fade-out `} ref={arrowRef} href={`/collections/${current}`}>
         <Arrow />
       </Link>
     </div>

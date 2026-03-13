@@ -54,7 +54,7 @@ const CollectionsDetail = () => {
           </div>
         </div>
         <div className='mt-[0.4rem]'>
-          <p className="split-text">A<sup>1</sup></p>
+          <p className="split-text">A1</p>
           <p className="split-text">Luminous Thread™</p>
         </div>
         <div ref={textRef} className='mt-[15rem] w-[30.3rem] '>
