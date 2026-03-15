@@ -1,24 +1,40 @@
-'use client'
-import React from 'react'
-import propositions from '../data/propositions'
 import Arrow from './arrow'
 import Link from 'next/link'
 import ProductCard from './product-card'
+import { client } from '@/sanity/client'
 
-const LimitedProposition = () => {
+const LimitedProposition = async () => {
+  const products = await client.fetch(`*[
+  _type == "product" &&
+  $slug in collection[]->slug.current
+  ]{
+    _id,
+    name,
+    images,
+    price,
+    'collections': collection[]->{
+      name, 
+      slug
+    }
+  }`, { slug: 'limited-propositions' });
+
   return (
     <div className='mt-[15rem]'>
       <h1 className='text-center uppercase font-butta tracking-[0.6rem] text-[2rem] mb-[4rem]'>Limited proposition</h1>
       <div className='flex px-[2rem] flex-wrap w-full justify-between gap-y-[4.5rem]'>
-       {Object.keys(propositions).map(key => (
-        <ProductCard 
-           products={propositions}
-           largeSize={true}
-           showCollection={true}
-           key={key}
-           productKey={key} 
-         />
-       ))}
+        {products.map((product) => {
+          const collection = product.collections.filter(col => col.slug.current !== 'limited-propositions')[0]
+          return (
+            <ProductCard 
+              product={product}
+              collection={`${collection.name} collection`}
+              showCollection={true}
+              key={product._id}
+              productKey={product._id} 
+              largeSize={true}
+            />
+          )
+        })}
       </div>
       <div className='w-full flex flex-col items-center justify-center mt-[4rem]'>
         <Link href='/collections' className='uppercase'>

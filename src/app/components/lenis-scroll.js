@@ -5,7 +5,7 @@ import { ReactLenis } from 'lenis/react'
 import { useEffect, useRef } from 'react'
 
 gsap.registerPlugin(ScrollTrigger)
-const LenisScroll = () => {
+const Lenis = ({ children }) => {
   const lenisRef = useRef()
   
   useEffect(() => {
@@ -19,8 +19,14 @@ const LenisScroll = () => {
   }, [])
   
   return (
-    <ReactLenis root options={{ autoRaf: false }} ref={lenisRef} />
+    //@todo: fix this shit
+    // <ReactLenis root options={{ autoRaf: false }} ref={lenisRef} >
+    <>
+      {children}
+    </>
+    // </ReactLenis>
   )
 }
 
-export default LenisScroll
+
+export default Lenis

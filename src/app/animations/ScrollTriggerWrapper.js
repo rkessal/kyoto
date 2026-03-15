@@ -10,16 +10,16 @@ const ScrollTriggerWrapper = ({ children, animationFn, params }) => {
 
   useGSAP(() => {
     if (!containerRef.current || !animationFn) return
-    
+
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: containerRef.current,
         ...params
       }
     })
-    
+
     animationFn(tl, containerRef)
-  }, {scope: containerRef})
+  }, { scope: containerRef })
 
   return <div ref={containerRef}>{children}</div>
 }

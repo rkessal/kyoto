@@ -7,8 +7,11 @@ import fs from 'fs';
 import path from 'path';
 import PreloadImages from "./components/PreloadImages";
 import Footer from "./components/footer";
-import LenisScroll from "./components/lenis-scroll";
 import { TextReveal } from "./components/text-reveal";
+import Lenis from "./components/lenis-scroll";
+
+//@todo: get collections from sanity
+
 
 async function getImages() {
   const collectionsDir = path.join(process.cwd(), 'public/collections');
@@ -61,30 +64,31 @@ export default async function RootLayout({ children }) {
   return (
     <>
       <PreloadImages images={images} />
-      <html lang="en">
-        <body
-          className={`${funnelSans.variable} ${buttacup.variable} antialiased`}
-        >
-          <nav className="z-10 p-8 flex flex-row items-start w-full fixed top-0 left-0  mix-blend-difference text-white">
-            <figure className="invert">
-              <Image src='/logo.svg' height={13} width={67} alt="" />
-              <span className="text-[0rem]">Kyoto</span>
-            </figure>
-            <ul className="capitalize top-[2rem] left-0 absolute pl-[87.4rem]">
-              <li><MenuLink href='/' active>Home</MenuLink> </li>
-              <li><MenuLink href='/collections'>Shop</MenuLink></li>
-              <li><MenuLink href='/about'>About</MenuLink></li>
-              <li><MenuLink href='#'>journal</MenuLink></li>
-              <li><MenuLink href='/contact'>contact</MenuLink></li>
-            </ul>
-            <div className="ml-auto">Bag (0)</div>
-          </nav>
-          {children}
-          <Footer />
-          <LenisScroll />
-          <TextReveal />
-        </body>
-      </html>
+      <Lenis>
+        <html lang="en">
+          <body
+            className={`${funnelSans.variable} ${buttacup.variable} antialiased`}
+          >
+            <nav className="z-10 p-8 flex flex-row items-start w-full fixed top-0 left-0  mix-blend-difference text-white">
+              <figure className="invert">
+                <Image loading="eager" src='/logo.svg' height={13} width={67} alt="" />
+                <span className="text-[0rem]">Kyoto</span>
+              </figure>
+              <ul className="capitalize top-[2rem] left-0 absolute pl-[87.4rem]">
+                <li><MenuLink href='/' active>Home</MenuLink> </li>
+                <li><MenuLink href='/collections'>Shop</MenuLink></li>
+                <li><MenuLink href='/about'>About</MenuLink></li>
+                <li><MenuLink href='#'>journal</MenuLink></li>
+                <li><MenuLink href='/contact'>contact</MenuLink></li>
+              </ul>
+              <div className="ml-auto">Bag (0)</div>
+            </nav>
+            {children}
+            <Footer />
+            <TextReveal />
+          </body>
+        </html>
+      </Lenis>
     </>
   );
 }

@@ -11,11 +11,11 @@ export default {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
-        lightGray: '#F6F6F6',
-        veryLightGray: '#FAFAFA',
-        darkGray: '#4A4A4A',
-        yellow: '#E5FF3E',
-        borderGray: '#E9E9E9',
+        lightGray: 'var(--lightGray)',
+        veryLightGray: 'var(--veryLightGray)',
+        darkGray: 'var(--darkGray)',
+        yellow: 'var(--yellow)',
+        borderGray: 'var(--borderGray)',
       },
       fontFamily: {
         sans: 'Funnel Sans',

@@ -1,64 +1,39 @@
-'use client'
 import React from 'react'
 import SizeSelector from './size-selector'
-import ParallaxImage from './parallax-image'
-import ScrollTriggerWrapper from '../animations/ScrollTriggerWrapper'
-import gsap from 'gsap'
+import { urlFor } from '@/sanity/image'
+import { getPrice } from '@/app/hooks'
+import ProductImage from './product-image'
 
-const ProductCard = ({ products, productKey, showCollection, largeSize }) => {
-  const animationFn = (tl, ref) => {
-    gsap.set('figure', {
-      clipPath: 'polygon(0% 0%, 0% 0%, 0% 100%, 0% 100%)'
-    })
-  
-    tl.from('img', {
-      scale: 1.4,
-      duration: 2.5,
-      ease: 'power4.out',
-    })
-      .to('figure', {
-        clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)',
-        duration: 2.5,
-        ease: 'power4.out',
-      }, '=')
-  }
+//@todo: add currency handler
+const currentCurrency = 'yen'
+
+const ProductCard = ({ product, productKey, collection, showCollection, index, largeSize }) => {
+  const price = getPrice(product.price, currentCurrency)
+
   return (
     <div className={`flex flex-col relative ${largeSize ? 'w-[83.4rem]' : 'w-[69.2rem]'} `}key={productKey}>
       <div className={`relative mb-[2rem] ${largeSize ? 'h-[80rem]' : 'h-[90rem]'}`}>
-        <ScrollTriggerWrapper
-          animationFn={animationFn}
-          params={{ start: 'top 90%' }}
-        >
-          <ParallaxImage loading='eager' alt='' width={834} height={800} src={products[productKey].image} />
-        </ScrollTriggerWrapper>
+        <ProductImage index={index} width={largeSize ? 834 : 692} height={largeSize ? 800 : 900} src={urlFor(product.images[0]).auto('format').url()} />
         <SizeSelector id={productKey} />
       </div>
       {showCollection ? (
         <>
           <p className='w-full bg-lightGray flex items-center h-[2rem] px-[0.5rem] mb-[0.5rem]' >
-            {products[productKey].title}
+            {product.name}
           </p>
           <div className='flex flex-row w-full gap-x-[2.5rem] justify-between'>
-            <p className='bg-lightGray flex w-full items-center h-[2rem] px-[0.5rem] uppercase font-butta tracking-[0.6rem] pt-[0.4rem] '>{products[productKey].collection}</p>
-            <select className='bg-lightGray flex w-full items-center h-[2rem] px-[0.5rem]'>
-              {Object.keys(products[productKey].prices).map(cur => (
-                <option key={`cur-${products[productKey].title}-${cur}`}>
-                  {products[productKey].prices[cur]}
-                </option>
-              ))}
-            </select>
+            <p className='bg-lightGray flex w-full items-center h-[2rem] px-[0.5rem] uppercase font-butta tracking-[0.6rem] pt-[0.4rem] '>{collection}</p>
+            <div className='bg-lightGray flex w-full items-center h-[2rem] px-[0.5rem]'>
+              {price.formatted}
+            </div>
           </div>
         </>
       ) : (
           <div className='flex flex-row w-full gap-x-[0.6rem] justify-between'>
-            <p className='bg-lightGray flex w-full items-center h-[2rem] px-[0.5rem] uppercase font-butta tracking-[0.6rem] pt-[0.4rem] '>{products[productKey].title}</p>
-            <select className='bg-lightGray flex w-full items-center h-[2rem] px-[0.5rem]'>
-              {Object.keys(products[productKey].prices).map(cur => (
-                <option key={`cur-${products[productKey].title}-${cur}`}>
-                  {products[productKey].prices[cur]}
-                </option>
-              ))}
-            </select>
+            <p className='bg-lightGray flex w-full items-center h-[2rem] px-[0.5rem]'>{product.name}</p>
+            <div className='bg-lightGray flex w-full items-center h-[2rem] px-[0.5rem]'>
+              {price.formatted}
+            </div>
           </div>
       )}
     </div>

@@ -5,6 +5,11 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --lightGray: #F6F6F6;
+  --veryLightGray: #FAFAFA;
+  --darkGray: #4A4A4A;
+  --yellow: #E5FF3E;
+  --borderGray: #E9E9E9;
 }
 
 html {
