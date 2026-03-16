@@ -15,6 +15,16 @@ const ProductImage = (props) => {
     const tl = gsap.timeline()
     gsap.set(container.current, { autoAlpha: 0 })
 
+    gsap.set(`.product-${index} .gray-box`, {
+      clipPath: 'inset(0% 100% 0% 0%)',
+    })
+
+    gsap.set(`.product .size-selector-container`, {
+      autoAlpha: 0,
+      scale: 0,
+      rotate: '45deg',
+    })
+
     gsap.set(container.current, {
       clipPath: 'polygon(0% 0%, 0% 0%, 0% 100%, 0% 100%)'
     })
@@ -62,9 +72,22 @@ const ProductImage = (props) => {
       }, '=')
       .to(container.current, {
         clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)',
-        duration: 1.8,
-        ease: 'power3.inOut',
+        duration: 2,
+        ease: 'power4.inOut',
       }, '=')
+      .to(`.product-${index} .gray-box`, {
+        autoAlpha: 1,
+        clipPath: 'inset(0% 0% 0% 0%)',
+        duration: 1.8,
+        ease: 'power4.inOut'
+      }, '=')
+      .to(`.product-${index} .size-selector-container`, {
+        autoAlpha: 1,
+        scale: 1,
+        duration: 1.2,
+        ease: 'power3.inOut',
+        rotate: '0deg',
+      }, '<0.6')
 
   }, [loaded])
 

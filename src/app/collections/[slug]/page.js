@@ -1,8 +1,15 @@
 import { client } from "@/sanity/client";
 import ProductCard from "@/app/components/product-card";
+import PageCollectionsSelectorWrapper from "@/app/components/page-collections-selector-wrapper";
+import PageProductsWrapper from "@/app/components/page-products-wrapper";
 
 export default async function Page({ params }) {
   const { slug } = await params
+  const collection = await client.fetch(`*[_type == "collection" && slug.current == $slug][0]{ 
+    name,
+    description,
+    slug,
+  }`, { slug });
   const products = await client.fetch(`*[
   _type == "product" &&
   $slug in collection[]->slug.current
@@ -13,23 +20,12 @@ export default async function Page({ params }) {
     price,
   }`, { slug });
   return (
-    <div className="font-sans font-light leading-[1.2rem] mt-[5.3rem] px-[2rem]">
-      <div className="max-w-[140.4rem] w-full flex flex-wrap gap-[2rem]">
-        {products.map((product, index) => (
-          <ProductCard
-            index={index}
-            productKey={product._id}
-            collection={slug}
-            product={product}
-            key={product.name}
-            showCollection={false}
-            largeSize={false}
-          />
-        ))}
-        {/* {Object.keys(propositions).map(key => (
-          <ProductCard collection={slug} products={propositions} key={key} productKey={key} />
-        ))} */}
-      </div>
+    <div className="collection-page flex flex-row gap-x-[2rem] font-sans font-light leading-[1.2rem] mt-[6rem] px-[2rem]">
+      <PageProductsWrapper slug={slug} products={products} />
+      <PageCollectionsSelectorWrapper 
+        collection={collection} 
+        slug={slug} 
+      />
     </div>
   );
 }

@@ -8,7 +8,7 @@ export default async function Collections() {
   }`);
 
   return (
-    <div className="font-sans font-light leading-[1.2rem] mt-[5.3rem] px-[2rem]">
+    <div className="page-fadeout font-sans font-light leading-[1.2rem] mt-[5.3rem] px-[2rem]">
       <div className="max-w-[140.4rem] w-full flex flex-wrap gap-[2rem]">
         <ul className="py-96">
           {collections.map(collection => (

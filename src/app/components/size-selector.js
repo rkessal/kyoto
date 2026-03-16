@@ -90,7 +90,7 @@ const SizeSelector = ({ id }) => {
     <div
       ref={container}
       key={`size-${id}`}
-      className={`${isSelectorOpen ? 'bg-white' : selectedSize ? 'bg-lightGray' : 'bg-darkGray'} duration-500 ease-in-out h-[4.1rem] w-[4.1rem] mb-[2rem] rounded-full  absolute bottom-0 left-[50%] translate-x-[-50%]`}
+      className={`${isSelectorOpen ? 'bg-white' : selectedSize ? 'bg-lightGray' : 'bg-darkGray'} opacity-0 size-selector-container transition-colors duration-500 ease-in-out h-[4.1rem] w-[4.1rem] mb-[2rem] rounded-full  absolute bottom-0 left-[50%] translate-x-[-50%]`}
     >
       <div onClick={handleSizeSelectorClick} className="size-button w-full h-full cursor-pointer group">
         <span style={{ display: selectedSize && !isSelectorOpen ? 'block' : 'none'}} className='size-selector-selected absolute top-[50%] left-[50%] translate-y-[-50%] translate-x-[-50%] uppercase'>

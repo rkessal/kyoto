@@ -1,18 +1,30 @@
 'use client'
 import Link from 'next/link'
-import React, { useRef } from 'react'
+import React, { useEffect, useRef } from 'react'
 import useSelected from '../animations/useSelected'
+import { useRouter } from 'next/navigation'
 
-const CollectionsSelectorItem = ({ index, title, number, description, id }) => {
+const CollectionsSelectorItem = ({ index, title, number, description, id, method, current, transition }) => {
+  const { push } = useRouter()
   const ref = useRef(null)
   const {isAnimating, ...handlers} = useSelected({ ref })
+
+  const handleLink = async (e) => {
+    if (method === 'path') {
+      if (id === current) return
+      e.preventDefault()
+      await transition()
+      push(`/collections/${id}?previous=${current}`, { scroll: false })
+    }
+  }
 
   return (
     <Link 
       {...handlers} 
-      scroll={false} 
-      href={`?collection=${id}`} 
+      scroll={false}
+      href={method === 'query' ? `/?collection=${id}` : `/collections/${id}`}
       className='relative flex flex-row py-[1.5rem] px-[2rem] gap-x-[3rem]'
+      onClick={handleLink}
     >
       <span ref={ref}
        className='absolute w-full h-full top-0 left-0 bg-veryLightGray'></span>

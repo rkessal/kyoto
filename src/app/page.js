@@ -6,9 +6,10 @@ import CollectionsDescription from "./components/collections-description";
 import Hero from "./components/hero";
 import { Suspense } from "react";
 
-export default function Home() {
+export default async function Home({ searchParams }) {
+  const current = (await searchParams).collection || 'kyoto'
   return (
-    <div className="font-sans font-light leading-[1.2rem]">
+    <div className="page-fadeout font-sans font-light leading-[1.2rem]">
       <Hero />
       <div className="flex flex-row w-full px-[2rem] mb-[15.4rem]">
         <Suspense>
@@ -16,7 +17,9 @@ export default function Home() {
           <div className="ml-[2rem] pl-[14.2rem] relative w-full">
             <h1 className="uppercase">collections</h1>
             <CollectionsDescription />
-            <CollectionsSelector />
+            <div className="ml-auto w-[44.7rem] absolute right-0 top-[40.5rem]">
+              <CollectionsSelector method='query' current={current} />
+            </div>
           </div>
         </Suspense>
       </div>
