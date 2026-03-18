@@ -1,7 +1,7 @@
 import Arrow from './arrow'
-import Link from 'next/link'
 import ProductCard from './product-card'
 import { client } from '@/sanity/client'
+import CollectionsLink from './collections-link'
 
 const LimitedProposition = async () => {
   const products = await client.fetch(`*[
@@ -38,10 +38,10 @@ const LimitedProposition = async () => {
         })}
       </div>
       <div className='w-full flex flex-col items-center justify-center mt-[4rem]'>
-        <Link href='/collections' className='uppercase'>
-        <span className='block mb-[0.5rem]'>view all</span>
+        <CollectionsLink>
+          <button className="uppercase mt-[1.7rem] mb-[0.5rem]">collections</button>
           <Arrow />
-        </Link>
+        </CollectionsLink>
       </div>
     </div>
   )

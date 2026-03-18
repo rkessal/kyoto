@@ -1,5 +1,5 @@
 'use client'
-import React, { useRef, useState } from 'react'
+import React, { useRef } from 'react'
 import CollectionsSelectorItem from './collections-selector-item'
 import collections from '../data/collections'
 import { useGSAP } from '@gsap/react'
@@ -13,15 +13,17 @@ const CollectionsSelector = ({ current, method, transition }) => {
   const size = (100 / Object.keys(collections).length).toFixed(2)
 
   useGSAP(() => {
-    if (previous) {
-      gsap.set(ref.current, {
-        yPercent: Object.keys(collections).indexOf(previous) * 100,
-      })
-    } else {
-      gsap.set(ref.current, {
-        yPercent: Math.max(Object.keys(collections).indexOf(current) * 100, 0),
-      })
-    }     
+    if (method === 'path') {
+      if (previous) {
+        gsap.set(ref.current, {
+          yPercent: Object.keys(collections).indexOf(previous) * 100,
+        })
+      } else {
+        gsap.set(ref.current, {
+          yPercent: Math.max(Object.keys(collections).indexOf(current) * 100, 0),
+        })
+      }
+    }
 
     gsap.to(ref.current, {
       yPercent: Math.max(Object.keys(collections).indexOf(current) * 100, 0),

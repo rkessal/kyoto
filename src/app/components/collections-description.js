@@ -3,10 +3,10 @@ import React, { useRef, useState, useEffect } from 'react'
 import collections from '../data/collections'
 import { useSearchParams } from 'next/navigation'
 import Arrow from './arrow'
-import Link from 'next/link'
 import { useGSAP } from '@gsap/react'
 import SplitType from 'split-type'
 import gsap from 'gsap'
+import CollectionsLink from './collections-link'
 
 const CollectionsDescription = () => {
   const searchParams = useSearchParams()
@@ -16,7 +16,7 @@ const CollectionsDescription = () => {
   const ref = useRef(null)
   const arrowRef = useRef(null)
 
-  useGSAP(() => {
+  const { contextSafe} = useGSAP(() => {
     const newCollection = searchParams.get('collection') ?? Object.keys(collections)[0]
 
     if (newCollection !== current) {
@@ -76,9 +76,9 @@ const CollectionsDescription = () => {
         {title}
       </h2>
       <p className="split mb-[2rem] w-[24.6rem]">{description.long}</p>
-      <Link className={`${available ? 'inline-block' : 'hidden'} description-fade-out `} ref={arrowRef} href={`/collections/${current}`}>
+      <CollectionsLink className={`${available ? 'inline-block' : 'hidden'} description-fade-out `} ref={arrowRef} href={`/collections/${current}`}>
         <Arrow />
-      </Link>
+      </CollectionsLink>
     </div>
   )
 }
